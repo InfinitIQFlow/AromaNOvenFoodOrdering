@@ -4,19 +4,11 @@ A modern, sophisticated food ordering application built with Next.js 16, TypeScr
 
 ## ✨ Features
 
-### Customer Features
 - **Premium Homepage**: Hero section with call-to-action, testimonials, and why-us section
 - **Dynamic Menu**: Browse food items filtered by category with descriptions and pricing
 - **Shopping Cart**: Add items with real-time cart updates and quantity management
 - **Checkout**: Complete order form with delivery address and special instructions
 - **Order Confirmation**: Instant order confirmation with tracking ID
-
-### Admin Features
-- **Real-time Dashboard**: Monitor all incoming orders with live updates
-- **Order Management**: Update order status (PENDING → CONFIRMED → PREPARING → READY → COMPLETED)
-- **Customer Details**: View delivery addresses and special instructions
-- **Order Statistics**: Track total orders, pending items, and completion rates
-- **Secure Access**: Password-protected admin panel
 
 ## 🚀 Tech Stack
 
@@ -35,9 +27,7 @@ aroma-oven/
 ├── app/
 │   ├── api/
 │   │   ├── menu/
-│   │   ├── orders/
-│   │   └── admin/
-│   ├── admin/
+│   │   └── orders/
 │   ├── checkout/
 │   ├── layout.tsx
 │   ├── page.tsx
@@ -102,19 +92,12 @@ Visit `http://localhost:3000` to see the application.
 
 ## 📱 Usage
 
-### For Customers
 1. Navigate to the menu section
 2. Filter by category
 3. Add items to cart
 4. Click cart icon in header
 5. Fill delivery details
 6. Place order and receive confirmation
-
-### For Admin
-1. Visit `http://localhost:3000/admin`
-2. Enter password: `admin123` (change in production!)
-3. View and manage orders in real-time
-4. Update order status as items are prepared and ready
 
 ## 🎨 Color Scheme
 
@@ -127,12 +110,11 @@ The app uses a premium brown, gold, and beige color palette:
 ## 🔐 Security Notes
 
 **Before Production:**
-1. Change admin password in `/app/admin/page.tsx`
-2. Implement proper authentication
-3. Add Row Level Security (RLS) policies in Supabase
-4. Use environment variables for sensitive data
-5. Enable HTTPS
-6. Validate all user inputs
+1. Implement proper customer authentication (optional)
+2. Add Row Level Security (RLS) policies in Supabase
+3. Use environment variables for sensitive data
+4. Enable HTTPS
+5. Validate all user inputs
 
 ## 📦 API Endpoints
 
@@ -142,10 +124,6 @@ The app uses a premium brown, gold, and beige color palette:
 ### Orders
 - `POST /api/orders` - Create a new order
 - `GET /api/orders?phone=<phone>` - Get orders for a customer
-
-### Admin
-- `GET /api/admin/orders` - Get all orders (admin only)
-- `PATCH /api/admin/orders/[id]` - Update order status (admin only)
 
 ## 🚢 Deployment
 
@@ -187,11 +165,6 @@ vercel
 - Ensure Supabase tables are created
 - Check API response in Network tab
 - Verify customer details are complete
-
-### Admin panel not accessible
-- Check password in `/app/admin/page.tsx`
-- Clear browser cache
-- Verify environment variables
 
 ## 📄 License
 

@@ -46,7 +46,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
 2. Visit `http://localhost:3000`
 3. Check if the menu items load correctly
 4. Test adding items to cart and proceeding to checkout
-5. Visit `http://localhost:3000/admin` to access the admin panel (password: aroma123)
+5. Test placing an order and verify it appears in the database
 
 ## Database Schema Overview
 
@@ -98,12 +98,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
 - created_at (timestamp)
 ```
 
-## Admin Panel Access
-
-- URL: `/admin`
-- Default Password: `aroma123`
-- Change this password in production!
-
 ## Features
 
 ### Customer Features
@@ -112,14 +106,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
 - View cart summary
 - Checkout with delivery details
 - Receive order confirmation with order ID
-
-### Admin Features
-- Real-time order dashboard
-- Filter orders by status
-- Update order status (PENDING → CONFIRMED → PREPARING → READY → COMPLETED)
-- View customer details and delivery address
-- See special instructions for orders
-- Track order statistics
 
 ## Future Enhancements
 
