@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-inter: 'Inter', sans-serif;
+
+  /* Premium warm palette */
+  --color-background: 48 48% 96%;
+  --color-foreground: 20 10% 15%;
+  --color-primary: 30 70% 50%;
+  --color-primary-foreground: 48 48% 96%;
+  --color-secondary: 35 60% 40%;
+  --color-secondary-foreground: 48 48% 96%;
+  --color-accent: 45 85% 55%;
+  --color-accent-foreground: 20 10% 15%;
+  --color-muted: 20 10% 70%;
+  --color-muted-foreground: 20 10% 40%;
+  --color-border: 20 10% 85%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  @apply bg-background text-foreground scroll-smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair);
+  font-weight: 600;
+}
+
+button {
+  font-family: var(--font-inter);
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Text utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
