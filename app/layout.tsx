@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { CartProvider } from '@/context/CartContext';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background">
       <body className="bg-background text-foreground font-sans">
-        {children}
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );
