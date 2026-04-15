@@ -4,6 +4,7 @@ import Menu from '@/components/Menu';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
+import CartDrawer from '@/components/CartDrawer';
 
 export const metadata = {
   title: 'Aroma Oven - Premium Cloud Kitchen',
@@ -19,6 +20,7 @@ export default function Home() {
       <WhyChooseUs />
       <Testimonials />
       <Footer />
+      <CartDrawer />
     </main>
   );
 }

@@ -11,20 +11,38 @@ export interface CartItem {
   image?: string;
 }
 
+export interface CartCustomerDetails {
+  name: string;
+  phone: string;
+}
+
 interface CartContextType {
   items: CartItem[];
+  isDrawerOpen: boolean;
+  specialInstructions: string;
+  customerDetails: CartCustomerDetails;
   addToCart: (item: Omit<CartItem, 'quantity'>) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
   getTotalPrice: () => number;
   getTotalItems: () => number;
+  openDrawer: () => void;
+  closeDrawer: () => void;
+  setSpecialInstructions: (instructions: string) => void;
+  setCustomerDetails: (details: CartCustomerDetails) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [specialInstructions, setSpecialInstructions] = useState('');
+  const [customerDetails, setCustomerDetails] = useState<CartCustomerDetails>({
+    name: '',
+    phone: '',
+  });
 
   const addToCart = useCallback((item: Omit<CartItem, 'quantity'>) => {
     setItems((prev) => {
@@ -36,6 +54,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       }
       return [...prev, { ...item, quantity: 1 }];
     });
+    setIsDrawerOpen(true);
   }, []);
 
   const removeFromCart = useCallback((id: string) => {
@@ -54,6 +73,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const clearCart = useCallback(() => {
     setItems([]);
+    setSpecialInstructions('');
+    setCustomerDetails({ name: '', phone: '' });
   }, []);
 
   const getTotalPrice = useCallback(() => {
@@ -64,16 +85,26 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     return items.reduce((sum, item) => sum + item.quantity, 0);
   }, [items]);
 
+  const openDrawer = useCallback(() => setIsDrawerOpen(true), []);
+  const closeDrawer = useCallback(() => setIsDrawerOpen(false), []);
+
   return (
     <CartContext.Provider
       value={{
         items,
+        isDrawerOpen,
+        specialInstructions,
+        customerDetails,
         addToCart,
         removeFromCart,
         updateQuantity,
         clearCart,
         getTotalPrice,
         getTotalItems,
+        openDrawer,
+        closeDrawer,
+        setSpecialInstructions,
+        setCustomerDetails,
       }}
     >
       {children}
